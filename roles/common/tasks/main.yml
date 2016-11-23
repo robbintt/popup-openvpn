@@ -1,0 +1,23 @@
+
+# consider moving some packages to admin user
+- name: Install Base Layer Packages
+  apt: name={{ item }} state=installed update_cache=yes cache_valid_time=3600
+  with_items:
+    - vim
+    - git
+    - fail2ban
+
+# This Ansible apt task requires `aptitude`
+- name: Perform Safe Upgrade
+  apt: upgrade=safe update_cache=yes cache_valid_time=3600
+
+
+- name: Deploy SSH Configuration
+  template:
+    src: "sshd_config.j2"
+    dest: "/etc/ssh/sshd_config"
+    owner: root
+    group: root
+    mode: 0644
+  notify: restart sshd
+

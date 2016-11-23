@@ -1,0 +1,35 @@
+
+# Ansible has some dependencies: http://docs.ansible.com/ansible/intro_installation.html
+# Detect if the client has python-apt. If not, install all listed dependencies.  
+- name: Install Ansible Dependencies
+  hosts: ubuntu
+  remote_user: root
+  gather_facts: no
+  pre_tasks:
+    - raw: if [ 1 -gt $(grep -c 'install ok installed' <<< `dpkg -s python-apt`) ]; then apt-get update; apt-get -y install python-simplejson python-apt; fi;
+###
+### End Ansible Dependencies      
+
+- name: apply common configuration to all nodes
+  hosts: ubuntu
+  remote_user: root
+
+  roles:
+    - common
+    - sudo
+    - swapfile
+
+- name: deploy Stoutsopenvpn OpenVPN role
+  hosts: Stoutsopenvpn
+  remote_user: root
+
+  roles:
+    - iptables-openvpn
+    - Stoutsopenvpn
+
+- name: check restart status and restart if required
+  hosts: ubuntu
+  remote_user: root
+
+  roles:
+    - rebooter

@@ -1,0 +1,29 @@
+
+- name: Show Swap and RAM
+  debug: 
+    msg: "ram={{ ansible_memtotal_mb }}, swap={{ ansible_swaptotal_mb }}"
+
+- name: Make swapfile
+  command: fallocate -l 4G /swapfile creates=/swapfile
+  when: "ansible_swaptotal_mb < 1"
+
+- name: Set swapfile permissions
+  file: path="/swapfile" owner=root group=root mode=0600
+  when: "ansible_swaptotal_mb < 1"
+
+- name: Make swap
+  command: mkswap /swapfile
+  when: "ansible_swaptotal_mb < 1"
+  
+- name: Add to fstab
+  lineinfile: 
+    dest: /etc/fstab 
+    regexp: "swapfile" 
+    line: "/swapfile none swap sw 0 0" 
+    state: present
+  when: "ansible_swaptotal_mb < 1"
+
+- name: Turn swap on
+  command: swapon /swapfile
+  when: "ansible_swaptotal_mb < 1"
+

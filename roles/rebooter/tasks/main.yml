@@ -1,0 +1,7 @@
+---
+
+- name: Check /var/run/reboot-required and trigger reboot
+  shell: sleep 2 && shutdown -r now removes=/var/run/reboot-required async=1 background=0 poll=0 ignore_errors=true
+
+- name: Wait for server restart response...
+  local_action: wait_for host={{ inventory_hostname }} state=started port=22 delay=15 timeout=60 connect_timeout=10

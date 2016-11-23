@@ -1,0 +1,12 @@
+# alias IP addresses below for readability and expandability
+# add IP addresses or hostnames as necessary
+[vpnservers]
+1.2.3.4
+
+
+# groups defined below in terms of aliases
+[ubuntu:children]
+vpnservers
+
+[Stoutsopenvpn:children]
+vpnservers

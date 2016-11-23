@@ -1,0 +1,17 @@
+
+- name: Install Base Layer Packages
+  apt: name={{ item }} state=installed update_cache=yes cache_valid_time=3600
+  with_items:
+    - iptables-persistent
+
+- name: Deploy iptables rules and restart iptables
+  template:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+    owner: root
+    group: root
+    mode: 0644
+  with_items:
+    - { src: 'files/rules.v4', dest: '/etc/iptables/rules.v4' }
+    - { src: 'files/rules.v6', dest: '/etc/iptables/rules.v6' }
+
