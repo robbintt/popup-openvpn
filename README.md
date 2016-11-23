@@ -10,7 +10,7 @@ This playbook is indended to very quickly pop up an OpenVPN VPN server.
 
 Make sure to reference your digital ocean referral code in the guide and at the top of this document. Free server money is great.
 
-1. Fix submodule in `.gitmodules` to point back to stouts.
+1. Add an automatic updates tool.
 2. Move Stouts.openvpn default rsa bits to 2048 bits.
     - Add variables in `group_vars/Stoutsopenvpn`
 3. Test this guide from very beginning to very end.
