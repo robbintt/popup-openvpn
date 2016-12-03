@@ -6,12 +6,18 @@
 # rule of thumb: one machine per user and client/certificate
 # lazy way: one certificate for all your machines
 openvpn_use_pam: yes
-openvpn_clients: [myvpn1, myvpn2]
+
+# it is preferred to generate a certificate per name/password
+# depending on your use case you can use this per device or per person
+# per device is preferred
+openvpn_clients: [myvpn1, myvpn2, myvpn3, myvpn4]
+
 openvpn_use_pam_users:
 - { name: defaultuser1, password: asecurepassword1 }
 - { name: defaultuser2, password: asecurepassword2 }
 - { name: defaultuser3, password: asecurepassword3 }
 - { name: defaultuser4, password: asecurepassword4 }
+
 openvpn_server_options:
  - push "dhcp-option DNS 8.8.8.8"
  - push "redirect-gateway def1 bypass-dhcp"
