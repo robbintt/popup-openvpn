@@ -8,7 +8,8 @@ This playbook is indended to very quickly pop up an OpenVPN VPN server.
 
 #### Guide
 
-1. Add your `SSH` key to `Digital Ocean`
+1. [Make an account and get a $10 free credit at digital ocean](https://m.do.co/c/a4d54c9e5004)
+2. Add your `SSH` key to `Digital Ocean`
     1. Enter the digital ocean web interface
     2. go to `settings->security->SSH keys`
     3. Paste your key, found by default `$HOME/.ssh/id_rsa.pub`
@@ -17,7 +18,7 @@ This playbook is indended to very quickly pop up an OpenVPN VPN server.
     5. `ansible` reads from the default `id_rsa.pub` location
         - you can set a different location as a command line argument in `manage.sh`
 
-2. Create a new server on Digital Ocean
+3. Create a new server on Digital Ocean
     1. Choose the `Ubuntu 16.04.1 x64` base image 
     2. Use the $5 option
     3. Choose a datacenter near you for low latency.
@@ -27,14 +28,14 @@ This playbook is indended to very quickly pop up an OpenVPN VPN server.
         - You will have 1 TB monthly transfer
         - They call a `server` a `droplet`
 
-3. Configure this repo for your users: `hosts`, `group_vars/stoutsopenvpn`
+4. Configure this repo for your users: `hosts`, `group_vars/stoutsopenvpn`
     1. Add the IP address of the server to your `hosts` file
     2. Add either one per person or one per device connecting to your vpn
         1. Add each of the following to your `group_vars/Stoutsopenvpn`
             - `user` 
             - `password`
             - `openvpn_client` 
-4. Run this playbook 
+5. Run this playbook 
     1. Install `ansible` locally
         - Optional: do this using your preferred method
         - `todo` (pip method is cross platform)
