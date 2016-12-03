@@ -6,12 +6,45 @@ This playbook is indended to very quickly pop up an OpenVPN VPN server.
 **When you run Stouts.openvpn for the first time, you will need to restart the computer before you can connect to the server. I don't know why.**
 
 
+#### Guide
+
+1. Add your `id_rsa.pub` to your digital ocean settings 
+    1. The new server `root` user will be logged in with this key
+    2. This key will be used when updating the server as well
+
+2. Create a new server on Digital Ocean server
+    1. They call a `server` a `droplet`
+    2. Use the $5 option
+    3. Use the `Ubuntu 16.04 LTS` base image 
+3. Configure this repo for your users: `hosts`, `group_vars/stoutsopenvpn`
+    1. Add the IP address of the server to your `hosts` file
+    2. Add either one per person or one per device connecting to your vpn
+        1. Add each of the following to your `group_vars/Stoutsopenvpn`
+            - `user` 
+            - `password`
+            - `openvpn_client` 
+4. Run this playbook 
+    1. Install `ansible` locally
+        - Optional: do this using your preferred method
+        - `todo` (pip method is cross platform)
+    2. execute: `manage.sh`
+        - The ansible script should run without any errors
+        - (The restarter role fails if it doesn't need to restart or something)
+    3. At the end of the script your server needs restarted. I don't know why
+        - todo - investigate if this was a one time thing or is always true...
+        - if so have the ansible script always restart?
+    4. To reconfigure or update your server you may run `manage.sh` again
+5. Assemble a .ovpn file on your server and put it on your devices
+    1. TODO 
+
+
+
 #### Todo
 
 Make sure to reference your digital ocean referral code in the guide and at the top of this document. Free server money is great.
 
 1. Add an automatic updates tool.
-2. Move Stouts.openvpn default rsa bits to 2048 bits.
+2. Move Stouts.openvpn default to 2048 bit certificate.
     - Add variables in `group_vars/Stoutsopenvpn`
 3. Test this guide from very beginning to very end.
     - Beginning: Create a Digital Ocean Account
