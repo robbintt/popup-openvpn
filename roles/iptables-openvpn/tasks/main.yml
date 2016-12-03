@@ -12,6 +12,6 @@
     group: root
     mode: 0644
   with_items:
-    - { src: 'files/rules.v4', dest: '/etc/iptables/rules.v4' }
-    - { src: 'files/rules.v6', dest: '/etc/iptables/rules.v6' }
+    - { src: '../files/rules.v4', dest: '/etc/iptables/rules.v4' }
+    - { src: '../files/rules.v6', dest: '/etc/iptables/rules.v6' }
 
