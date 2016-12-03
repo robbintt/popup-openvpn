@@ -36,6 +36,7 @@ This playbook is indended to very quickly pop up an OpenVPN VPN server.
         - `hosts` 
         - `group_vars/stoutsopenvpn`
     2. Add the IP address of the server to your `hosts` file
+        - This is available in your digital ocean dashboard
     3. Add each of the following to your `group_vars/Stoutsopenvpn`
         - `user` 
         - `password`
