@@ -44,7 +44,8 @@ This playbook is indended to very quickly pop up an OpenVPN VPN server.
         - `password`
             - use a strong password
         - `openvpn_client` 
-            - any name is fine -- default is `myvpn1` etc.
+            - any name is fine -- the default is `myvpn1` etc.
+    4. You can add as many openvpn_client sections and user/passwords as you wish
 
 5. It's time to automatically set things up!!
     1. Install `ansible` locally
