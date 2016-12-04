@@ -102,6 +102,12 @@ Make sure to reference your digital ocean referral code in the guide and at the 
     - Get all ovpn files with [ansible fetch](http://docs.ansible.com/ansible/fetch_module.html)
         - store them locally to make things simple in the repo directory
         - default overwrite
+1. One way might be to
+    1. copy all 3 source files
+        - make a subdirectory to put the copied files into
+    2. add the xml tags to the copied files (so the originals are good)
+    3. use [ansible assemble](http://docs.ansible.com/ansible/assemble_module.html) to put the files together
+        - does the ovpn file need to be in any order? i doubt it.
 
 
 #### Notes for todo
