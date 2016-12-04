@@ -1,7 +1,9 @@
 
 ### Digital Ocean Ubuntu 16.04 LTS OpenVPN + Stouts.openvpn
 
-This playbook is indended to very quickly pop up an OpenVPN VPN server.
+This playbook will quickly pop up an (optionally disposable) OpenVPN VPN service.
+
+If you can 'kind of' run a server that should be enough to manage this.
 
 **When you run Stouts.openvpn for the first time, you will need to restart the computer before you can connect to the server. I don't know why.**
 
