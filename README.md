@@ -98,8 +98,10 @@ Make sure to reference your digital ocean referral code in the guide and at the 
 1. This [digital ocean guide](https://www.digitalocean.com/community/tutorials/how-to-set-up-an-openvpn-server-on-ubuntu-14-04) describes the method of appending files in xml-like tags.
     - Grep for `ovpn` in this file.
 2. Steps:
-    - Copy the ovpn file into a new location, perhaps `/etc/openvpn/keys/`
-    - Append each of the three files inside their xml tags to the ovpn file
+    - Append each of the three files inside their xml tags to its ovpn file in `/etc/openvpn/keys/`
+    - Get all ovpn files with [ansible fetch](http://docs.ansible.com/ansible/fetch_module.html)
+        - store them locally to make things simple in the repo directory
+        - default overwrite
 
 
 #### Notes for todo
