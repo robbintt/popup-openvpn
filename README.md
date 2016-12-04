@@ -15,9 +15,10 @@ This playbook is indended to very quickly pop up an OpenVPN VPN server.
     2. go to `settings->security->SSH keys`
     3. Paste your key, found by default `$HOME/.ssh/id_rsa.pub`
         - tip: make a key with `ssh-keygen`
+        - danger: `ssh-keygen` WILL overwrite your current key without warning
     4. On server creation, the key will be added in server's `root` user's `authorized_keys`
     5. `ansible` reads from the default `id_rsa.pub` location
-        - you can set a different location as a command line argument in `manage.sh`
+        - you can manually set a key as a command line argument in `manage.sh`
 
 3. Create a new server on Digital Ocean
     1. Choose the `Ubuntu 16.04.1 x64` base image 
@@ -53,9 +54,20 @@ This playbook is indended to very quickly pop up an OpenVPN VPN server.
         - todo - investigate if this was a one time thing or is always true...
         - if so have the ansible script always restart?
     4. To reconfigure or update your server you may run `manage.sh` again
+
 5. Assemble a .ovpn file on your server and put it on your devices
     1. TODO 
 
+
+    5. email the .ovpn file to yourself
+        - We will next open this file in your `OpenVPN Client`
+
+6. Install a client on each of your devices.  You will need: `username`, `password`, `.ovpn file`
+    1. Client Recommendations
+        - macos: [Tunnelblick](https://tunnelblick.net/)
+            - option: use `brew cask` to install
+        - iphone app store: `openvpn` by OpenVPN Technologies
+        - android app store: `OpenVPN Connect` by OpenVPN Technologies
 
 
 #### Todo
