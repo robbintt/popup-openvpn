@@ -70,7 +70,7 @@ This playbook is indended to very quickly pop up an OpenVPN VPN server.
     1. Client Recommendations
         - macos: [Tunnelblick](https://tunnelblick.net/)
             - option: use `brew cask` to install
-        - iphone app store: `openvpn` by OpenVPN Technologies
+        - iphone app store: `OpenVPN` by OpenVPN Technologies
         - android app store: `OpenVPN Connect` by OpenVPN Technologies
 
 
@@ -78,6 +78,7 @@ This playbook is indended to very quickly pop up an OpenVPN VPN server.
 
 Make sure to reference your digital ocean referral code in the guide and at the top of this document. Free server money is great.
 
+0. Make a workflow for adding a new user and client certificate "for a friend"
 1. Add an automatic updates tool.
 2. Move Stouts.openvpn default to 2048 bit certificate.
     - Add variables in `group_vars/Stoutsopenvpn`
@@ -90,6 +91,15 @@ Make sure to reference your digital ocean referral code in the guide and at the 
 6. Ask for suggestions and additions from noisebridge
 7. Deploy to the world at large (reddit?)
 8. Maybe write a digital ocean article.
+
+
+#### Manually Generate .ovpn files for each certificate
+
+1. This [digital ocean guide](https://www.digitalocean.com/community/tutorials/how-to-set-up-an-openvpn-server-on-ubuntu-14-04) describes the method of appending files in xml-like tags.
+    - Grep for `ovpn` in this file.
+2. Steps:
+    - Copy the ovpn file into a new location, perhaps `/etc/openvpn/keys/`
+    - Append each of the three files inside their xml tags to the ovpn file
 
 
 #### Notes for todo
