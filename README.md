@@ -40,8 +40,11 @@ This playbook is indended to very quickly pop up an OpenVPN VPN server.
         - This is available in your digital ocean dashboard
     3. Add each of the following to your `group_vars/Stoutsopenvpn`
         - `user` 
+            - any username is fine
         - `password`
+            - use a strong password
         - `openvpn_client` 
+            - any name is fine -- default is `myvpn1` etc.
 
 5. It's time to automatically set things up!!
     1. Install `ansible` locally
