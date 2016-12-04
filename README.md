@@ -26,26 +26,32 @@ This playbook is indended to very quickly pop up an OpenVPN VPN server.
     3. Choose a datacenter near you for low latency.
     4. Check your preferred `ssh key` under `Add your SSH keys`
     5. Choose a hostname like `popup-openvpn`
-    6. Notes
-        - You will have 1 TB monthly transfer
+    6. Do not check `use IPv6`
+    7. Notes
+        - You will have 1 terabyte of monthly transfer
         - They call a `server` a `droplet`
 
 4. Configure this repo for your users
     1. Clone this repository on your local computer
-        - `git clone git@github.com:robbintt/popup-openvpn.git`
+        - `git clone https://github.com/robbintt/popup-openvpn.git`
     1. Configuration files: 
         - `hosts` 
         - `group_vars/stoutsopenvpn`
     2. Add the IP address of the server to your `hosts` file
-        - This is available in your digital ocean dashboard
+        - The `IP address` is available in your digital ocean dashboard
+        - In the `[vpnservers]` section, replace the default 1.2.3.4 with your server's IP address
+        - advanced: you may add additional lines with more vpn servers which will generate different certificates but otherwise have the same users and certificate names. They would each need their own ovpn files
     3. Add each of the following to your `group_vars/Stoutsopenvpn`
+        - Replace or delete the example users and passwords entirely
+        - You need at least one user and password
         - `user` 
-            - any username is fine
+            - any username is fine in user
         - `password`
             - use a strong password
         - `openvpn_client` 
             - any name is fine -- the default is `myvpn1` etc.
     4. You can add as many openvpn_client sections and user/passwords as you wish
+    5. IMPORTANT: Delete any extra user lines and unnecessary example certificates, e.g. `myvpn3`, `myvpn4`
 
 5. It's time to automatically set things up!!
     1. Install `ansible` locally
@@ -66,7 +72,7 @@ This playbook is indended to very quickly pop up an OpenVPN VPN server.
     5. email the .ovpn file to yourself
         - We will next open this file in your `OpenVPN Client`
 
-6. Install a client on each of your devices.  You will need: `username`, `password`, `.ovpn file`
+6. Install a client on each of your devices.  You will need: `user`, `password`, `.ovpn file`
     1. Client Recommendations
         - macos: [Tunnelblick](https://tunnelblick.net/)
             - option: use `brew cask` to install
