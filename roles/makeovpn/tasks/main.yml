@@ -1,0 +1,120 @@
+# Purpose of role: Move working .ovpn directory to the localhost
+# if ovpn files are missing, run the playbook to regenerate them
+
+- name: make working directory for each unassembled ovpn file
+  file: 
+    path: /etc/openvpn/keys/ovpn_files/{{ item }}
+    state: directory
+    mode: 0755
+  with_items:
+    - "{{ openvpn_clients }}"
+
+- name: Move ovpn files to a subdirectory
+  copy:
+    remote_src: True
+    force: yes
+    src: /etc/openvpn/keys/{{ item[0] }}.{{ item[1] }}
+    dest: /etc/openvpn/keys/ovpn_files/{{ item[0] }}/
+  with_nested: 
+    - "{{ openvpn_clients }}"
+    - [ "ovpn", "crt", "key" ]
+
+- name: remove external references from ovpn files
+  lineinfile:
+    state: absent
+    regexp: "{{ item[0] }}"
+    dest: "/etc/openvpn/keys/ovpn_files/{{ item[1] }}/{{ item[1] }}.ovpn"
+  with_nested:
+    - [ "^ca .*.crt", "^cert .*crt", "^key .*key" ]
+    - "{{ openvpn_clients }}"
+
+- name: Move ca.crt to each subdirectory
+  copy:
+    remote_src: True
+    force: yes
+    src: /etc/openvpn/keys/ca.crt 
+    dest: /etc/openvpn/keys/ovpn_files/{{ item }}
+  with_items:
+    - "{{ openvpn_clients }}"
+
+# Add xml type wrappers on ca, crt, key files.
+- name: Add <ca> before BOF in ca.crt
+  lineinfile: 
+    state: present
+    dest: "/etc/openvpn/keys/ovpn_files/{{ item }}/ca.crt"
+    insertbefore: BOF
+    line: "<ca>"
+  with_items:
+    - "{{ openvpn_clients }}"
+
+- name: Add </ca> after EOF in ca.crt
+  lineinfile: 
+    state: present
+    dest: "/etc/openvpn/keys/ovpn_files/{{ item }}/ca.crt"
+    insertafter: EOF
+    line: "</ca>"
+  with_items:
+    - "{{ openvpn_clients }}"
+
+- name: Add <cert> before BOF in ca.crt
+  lineinfile: 
+    state: present
+    dest: "/etc/openvpn/keys/ovpn_files/{{ item }}/{{ item }}.crt"
+    insertbefore: BOF
+    line: "<cert>"
+  with_items:
+    - "{{ openvpn_clients }}"
+
+- name: Add </cert> after EOF in ca.crt
+  lineinfile: 
+    state: present
+    dest: "/etc/openvpn/keys/ovpn_files/{{ item }}/{{ item }}.crt"
+    insertafter: EOF
+    line: "</cert>"
+  with_items:
+    - "{{ openvpn_clients }}"
+
+- name: Add <key> before BOF in each <client_cert>.key
+  lineinfile: 
+    state: present
+    dest: "/etc/openvpn/keys/ovpn_files/{{ item }}/{{ item }}.key"
+    insertbefore: BOF
+    line: "<key>"
+  with_items:
+    - "{{ openvpn_clients }}"
+
+- name: Add </key> after EOF in each <client_cert>.key
+  lineinfile: 
+    state: present
+    dest: "/etc/openvpn/keys/ovpn_files/{{ item }}/{{ item }}.key"
+    insertafter: EOF
+    line: "</key>"
+  with_items:
+    - "{{ openvpn_clients }}"
+
+- name: Assemble all ovpn files in ovpn_files
+  assemble:
+    remote_src: True
+    dest: "/etc/openvpn/keys/ovpn_files/{{ item }}.ovpn"
+    src: "/etc/openvpn/keys/ovpn_files/{{ item }}"
+  with_items:
+    - "{{ openvpn_clients }}"
+
+- name: Fetch all ovpn files to the local playbook directory
+  fetch:
+    src: /etc/openvpn/keys/ovpn_files/{{ item }}.ovpn
+    dest: ovpn_files/
+    flat: yes
+  with_items: 
+     - "{{ openvpn_clients }}"
+  
+
+# - name: Deploy SSH Configuration
+#   template:
+#     src: "sshd_config.j2"
+#     dest: "/etc/ssh/sshd_config"
+#     owner: root
+#     group: root
+#     mode: 0644
+#   notify: restart sshd
+# 

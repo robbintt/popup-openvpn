@@ -43,7 +43,7 @@ If you can 'kind of' run a server that should be enough to manage this.
         - The `IP address` is available in your digital ocean dashboard
         - In the `[vpnservers]` section, replace the default 1.2.3.4 with your server's IP address
         - advanced: you may add additional lines with more vpn servers which will generate different certificates but otherwise have the same users and certificate names. They would each need their own ovpn files
-    3. Add each of the following to your `group_vars/Stoutsopenvpn`
+    3. Add each of the following to your `group_vars/all`
         - Replace or delete the example users and passwords entirely
         - You need at least one user and password
         - `user` 
@@ -89,7 +89,7 @@ Make sure to reference your digital ocean referral code in the guide and at the 
 0. Make a workflow for adding a new user and client certificate "for a friend"
 1. Add an automatic updates tool.
 2. Move Stouts.openvpn default to 2048 bit certificate.
-    - Add variables in `group_vars/Stoutsopenvpn`
+    - Add variables in `group_vars/all`
 3. Test this guide from very beginning to very end.
     - Beginning: Create a Digital Ocean Account
     - End: Install the ovpn cert and put the password in on all your devices
@@ -148,6 +148,7 @@ You will be converting four files into one file using a xml type syntax. Follow 
 3. See if you can move the `restart wait_for` to a `handler` so it doesn't always hang 15 seconds.
     - or add a `when` condition?
 4. Review [Best Practices](http://docs.ansible.com/ansible/playbooks_best_practices.html)
+5. Use ansible vault to encrypt group_vars/all
 
 
 #### References
@@ -157,7 +158,7 @@ Some useful links and additions.
 
 #### Using Ansible Vault
 
-You might use this to encrypt your `group_vars/Stoutsopenvpn`
+You might use this to encrypt your `group_vars/all`
 
 - Encrypt a file: `ansible-vault encrypt foo.yml bar.yml baz.yml`
 - Decrypt a file: `ansible-vault decrypt foo.yml bar.yml baz.yml`

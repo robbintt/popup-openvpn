@@ -26,6 +26,7 @@
   roles:
     - iptables-openvpn
     - Stoutsopenvpn
+    - makeovpn
 
 - name: check restart status and restart if required
   hosts: ubuntu
