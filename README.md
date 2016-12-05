@@ -42,7 +42,6 @@ If you can 'kind of' run a server that should be enough to manage this.
     2. Add the IP address of the server to your `hosts` file
         - The `IP address` is available in your digital ocean dashboard
         - In the `[vpnservers]` section, replace the default 1.2.3.4 with your server's IP address
-        - advanced: you may add additional lines with more vpn servers which will generate different certificates but otherwise have the same users and certificate names. They would each need their own ovpn files. If you do this you will need to manually retrieve the ovpn files. You can find the final remote location in the 'makeovpn' role.
     3. Add each of the following to your `group_vars/all`
         - Replace or delete the example users and passwords entirely
         - You need at least one user and password
