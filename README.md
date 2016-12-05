@@ -94,22 +94,17 @@ If you can 'kind of' run a server that should be enough to manage this.
 
 #### Future
 
-1. rebooter isn't working for some reason. The sleep command probably needs to be a shell...
-2. set [tzdata](https://gist.github.com/jerm/fc7f33f6a6d6534f6fde)!! already did this on some hosts so make it idempotent.
-3. See if you can move the `restart wait_for` to a `handler` so it doesn't always hang 15 seconds.
-    - or add a `when` condition?
-4. Review [Best Practices](http://docs.ansible.com/ansible/playbooks_best_practices.html)
-5. Use ansible vault to encrypt group_vars/all
-6. Make a workflow for adding a new user and client certificate "for a friend"
-7. Add an automatic updates tool. 
-8. Move Stouts.openvpn default to 2048 bit certificate.
+1. Use ansible vault to encrypt group_vars/all
+2. Make a workflow for adding a new user and client certificate "for a friend"
+3. Add an automatic updates tool. 
+4. Move Stouts.openvpn default to 2048 bit certificate.
     - Add variables in `group_vars/all`
-9. Test this guide from very beginning to very end.
+    - needs testing
+5. Test this guide from very beginning to very end.
     - Beginning: Create a Digital Ocean Account
     - End: Install the ovpn cert and put the password in on all your devices
     - Very End: Maintaining your server
-10. Deploy to the world at large (reddit?)
-11. Maybe write a digital ocean article.
+6. Deploy to the world at large (reddit? digital ocean article?)
 
 
 #### Stouts.openvpn
