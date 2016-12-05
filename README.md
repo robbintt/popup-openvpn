@@ -43,7 +43,6 @@ If you can 'kind of' run a server that should be enough to manage this.
         - The `IP address` is available in your digital ocean dashboard
         - In the `[vpnservers]` section, replace the default 1.2.3.4 with your server's IP address
     3. Add each of the following to your `group_vars/all`
-        - Replace or delete the example users and passwords entirely
         - You need at least one user and password
         - `user` 
             - any username is fine in user
@@ -51,6 +50,7 @@ If you can 'kind of' run a server that should be enough to manage this.
             - use a strong password
         - `openvpn_client` 
             - any name is fine -- the default is `myvpn1` etc.
+        - **Replace or delete the example users and passwords entirely**
     4. You can add as many openvpn_client sections and user/passwords as you wish
     5. IMPORTANT: Delete any extra user lines and unnecessary example certificates, e.g. `myvpn3`, `myvpn4`
 
