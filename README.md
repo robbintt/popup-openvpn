@@ -38,7 +38,7 @@ If you can 'kind of' run a server that should be enough to manage this.
         - `git clone https://github.com/robbintt/popup-openvpn.git`
     1. Configuration files: 
         - `hosts` 
-        - `group_vars/stoutsopenvpn`
+        - `group_vars/all`
     2. Add the IP address of the server to your `hosts` file
         - The `IP address` is available in your digital ocean dashboard
         - In the `[vpnservers]` section, replace the default 1.2.3.4 with your server's IP address
