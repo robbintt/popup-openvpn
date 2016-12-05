@@ -67,19 +67,19 @@ If you can 'kind of' run a server that should be enough to manage this.
         - if so have the ansible script always restart?
     4. To reconfigure or update your server you may run `manage.sh` again
 
-5. Assemble a .ovpn file on your server and put it on your devices
-    1. TODO 
 
+6. email the .ovpn files to all your users
+    - Each user only needs the ovpn file generated for them. They also need their username and password
+    - We will open this file in your `OpenVPN Client`
 
-    5. email the .ovpn file to yourself
-        - We will next open this file in your `OpenVPN Client`
-
-6. Install a client on each of your devices.  You will need: `user`, `password`, `.ovpn file`
+7. Install a client on each of your devices.  You will need: `user`, `password`, `.ovpn file`
     1. Client Recommendations
         - macos: [Tunnelblick](https://tunnelblick.net/)
             - option: use `brew cask` to install
         - iphone app store: `OpenVPN` by OpenVPN Technologies
         - android app store: `OpenVPN Connect` by OpenVPN Technologies
+    2. You will need to follow the client specific instructions
+        - TODO: Assemble links for client instructions
 
 
 #### Todo
