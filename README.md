@@ -5,10 +5,10 @@ This playbook will quickly pop up an (optionally disposable) OpenVPN VPN service
 
 If you can 'kind of' run a server that should be enough to manage this.
 
-**When you run Stouts.openvpn for the first time, you will need to restart the computer before you can connect to the server. I don't know why.**
+**When you run this playbook for the first time, you will need to restart the server before you can connect.**
 
 
-#### Guide
+#### Installation Guide
 
 1. [Make an account and get a $10 free credit at digital ocean](https://m.do.co/c/a4d54c9e5004)
 
@@ -63,10 +63,8 @@ If you can 'kind of' run a server that should be enough to manage this.
         - The ansible script should run without any errors
         - (The restarter role fails if it doesn't need to restart or something)
     3. At the end of the script your server needs restarted. I don't know why
-        - todo - investigate if this was a one time thing or is always true...
-        - if so have the ansible script always restart?
+        - todo - just restart the server every time the playbook is run or something
     4. To reconfigure or update your server you may run `manage.sh` again
-
 
 6. email the .ovpn files to all your users
     - Each user only needs the ovpn file generated for them. They also need their username and password
@@ -80,48 +78,10 @@ If you can 'kind of' run a server that should be enough to manage this.
         - android app store: `OpenVPN Connect` by OpenVPN Technologies
     2. You will need to follow the client specific instructions
         - TODO: Assemble links for client instructions
+    3. All your users need to do this step for all their devices
 
-
-#### Todo
-
-Make sure to reference your digital ocean referral code in the guide and at the top of this document. Free server money is great.
-
-0. Make a workflow for adding a new user and client certificate "for a friend"
-1. Add an automatic updates tool.
-2. Move Stouts.openvpn default to 2048 bit certificate.
-    - Add variables in `group_vars/all`
-3. Test this guide from very beginning to very end.
-    - Beginning: Create a Digital Ocean Account
-    - End: Install the ovpn cert and put the password in on all your devices
-    - Very End: Maintaining your server
-4. Add a guide from very beginning to very end
-5. Create per-device table of recommended OpenVPN clients
-6. Ask for suggestions and additions from noisebridge
-7. Deploy to the world at large (reddit?)
-8. Maybe write a digital ocean article.
-
-
-#### Manually Generate .ovpn files for each certificate
-
-1. This [digital ocean guide](https://www.digitalocean.com/community/tutorials/how-to-set-up-an-openvpn-server-on-ubuntu-14-04) describes the method of appending files in xml-like tags.
-    - Grep for `ovpn` in this file.
-2. Steps:
-    - Append each of the three files inside their xml tags to its ovpn file in `/etc/openvpn/keys/`
-    - Get all ovpn files with [ansible fetch](http://docs.ansible.com/ansible/fetch_module.html)
-        - store them locally to make things simple in the repo directory
-        - default overwrite
-1. One way might be to
-    1. copy all 3 source files
-        - make a subdirectory to put the copied files into
-    2. add the xml tags to the copied files (so the originals are good)
-    3. use [ansible assemble](http://docs.ansible.com/ansible/assemble_module.html) to put the files together
-        - does the ovpn file need to be in any order? i doubt it.
-
-
-#### Notes for todo
-
-1. Default: root cannot login with a password over ssh
-    - This means the only valid credential is an ssh key
+8. Maintaining your server
+    - TODO
 
 
 #### Requirements
@@ -129,16 +89,6 @@ Make sure to reference your digital ocean referral code in the guide and at the 
 - Server: Digital Ocean Ubuntu 16.04.1 Release
 - Local `~/.ssh/id_rsa.pub` private key deployed to remote root `authorized_keys`
     - This is done through Digital Ocean on droplet deployment
-
-
-#### Stouts.openvpn
-
-The [Stouts.openvpn](https://github.com/Stouts/Stouts.openvpn) repo is included as a subrepo in `/roles/Stoutsopenvpn`. 
-
-
-#### Manually building your `ovpn` for deploying keys to IOS
-
-You will be converting four files into one file using a xml type syntax. Follow the appropriate section of the [DigitalOcean Guide](https://www.digitalocean.com/community/tutorials/how-to-set-up-an-openvpn-server-on-ubuntu-14-04)
 
 
 #### Future
@@ -149,9 +99,24 @@ You will be converting four files into one file using a xml type syntax. Follow 
     - or add a `when` condition?
 4. Review [Best Practices](http://docs.ansible.com/ansible/playbooks_best_practices.html)
 5. Use ansible vault to encrypt group_vars/all
+6. Make a workflow for adding a new user and client certificate "for a friend"
+7. Add an automatic updates tool. 
+8. Move Stouts.openvpn default to 2048 bit certificate.
+    - Add variables in `group_vars/all`
+9. Test this guide from very beginning to very end.
+    - Beginning: Create a Digital Ocean Account
+    - End: Install the ovpn cert and put the password in on all your devices
+    - Very End: Maintaining your server
+10. Deploy to the world at large (reddit?)
+11. Maybe write a digital ocean article.
 
 
-#### References
+#### Stouts.openvpn
+
+The [Stouts.openvpn](https://github.com/Stouts/Stouts.openvpn) repo is included as a subrepo in `/roles/Stoutsopenvpn`. 
+
+
+### References
 
 Some useful links and additions.
 
@@ -169,29 +134,5 @@ You might use this to encrypt your `group_vars/all`
 
 ##### Links
 
-- [YAML Syntax Details](http://docs.ansible.com/ansible/YAMLSyntax.html)
-
-- [Ansible Homebrew](http://docs.ansible.com/ansible/homebrew_module.html) exists...
-
-- Ansible Modules Used:
-    - [Apt](http://docs.ansible.com/ansible/apt_module.html)
-    - [User](http://docs.ansible.com/ansible/user_module.html)
-    - [Command](http://docs.ansible.com/ansible/command_module.html#command)
-    - [Shell](http://docs.ansible.com/ansible/shell_module.html)
-    - [Raw](http://docs.ansible.com/ansible/raw_module.html)
-    - [lineinfile](http://docs.ansible.com/ansible/lineinfile_module.html)
-    - [apache2_module](http://docs.ansible.com/ansible/apache2_module_module.html)
-    - [Vault](http://docs.ansible.com/ansible/playbooks_vault.html)
-    - [Copy](http://docs.ansible.com/ansible/copy_module.html)
-    - [Git](http://docs.ansible.com/ansible/git_module.html)
-    - [Become](http://docs.ansible.com/ansible/become.html)
-    - [mysql_user](http://docs.ansible.com/ansible/mysql_user_module.html)
-    - [get_url](http://docs.ansible.com/ansible/get_url_module.html)
-    - [unarchive](http://docs.ansible.com/ansible/unarchive_module.html)
-
-- [YAML Syntax](http://docs.ansible.com/ansible/YAMLSyntax.html)
-- [Patterns](http://docs.ansible.com/ansible/intro_patterns.html) - decide which hosts to manage
-    - grep for this to see a good example in a task
-- [Best Practices](http://docs.ansible.com/ansible/playbooks_best_practices.html)
-
+- [Manually building an ovpn file with certs and keys inside](https://www.digitalocean.com/community/tutorials/how-to-set-up-an-openvpn-server-on-ubuntu-14-04)
 
