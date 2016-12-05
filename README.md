@@ -67,8 +67,10 @@ If you can 'kind of' run a server that should be enough to manage this.
     4. To reconfigure or update your server you may run `manage.sh` again
 
 6. email the .ovpn files to all your users
+    - The ansible playbook transferred the .ovpn files to the computer you ran ansible from
+    - Each ovpn file is stored in `./openvpn_files/` (inside the `popup-openvpn` project directory)
     - Each user only needs the ovpn file generated for them. They also need their username and password
-    - We will open this file in your `OpenVPN Client`
+    - You will open this file in your `OpenVPN Client`
 
 7. Install a client on each of your devices.  You will need: `user`, `password`, `.ovpn file`
     1. Client Recommendations
