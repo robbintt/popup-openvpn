@@ -58,7 +58,6 @@ If you can 'kind of' run a server that should be enough to manage this.
     1. Install `ansible` locally
         - Follow the [official installation guide](http://docs.ansible.com/ansible/intro_installation.html) for your system
         - Optional: do this using your preferred method
-        - `todo` (pip method is cross platform)
     2. execute: `manage.sh`
         - The ansible script should run without any errors
         - (The restarter role fails if it doesn't need to restart or something)
