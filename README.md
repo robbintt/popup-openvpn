@@ -19,7 +19,7 @@ If you can 'kind of' run a server that should be enough to manage this.
         - tip: make a key with `ssh-keygen`
         - danger: `ssh-keygen` WILL overwrite your current key without warning
     4. On server creation, the key will be added in server's `root` user's `authorized_keys`
-    5. `ansible` reads from the default `id_rsa.pub` location
+    5. `ansible` uses the default SSH key: `~/.ssh/id_rsa.pub`
         - you can manually set a key as a command line argument in `manage.sh`
 
 3. Create a new server on Digital Ocean
@@ -56,6 +56,7 @@ If you can 'kind of' run a server that should be enough to manage this.
 
 5. It's time to automatically set things up!!
     1. Install `ansible` locally
+        - Follow the [official installation guide](http://docs.ansible.com/ansible/intro_installation.html) for your system
         - Optional: do this using your preferred method
         - `todo` (pip method is cross platform)
     2. execute: `manage.sh`
