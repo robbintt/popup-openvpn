@@ -8,7 +8,6 @@ If you can 'kind of run a server', then you can manage this.
 Set up all your non-technical friends with ovpn files, users, and passwords!
 
 
-**When you run this playbook for the first time, you will need to restart the server before you can connect.**
 
 
 #### Installation Guide
@@ -66,8 +65,9 @@ Set up all your non-technical friends with ovpn files, users, and passwords!
     2. execute: `manage.sh`
         - The ansible script should run without any errors
         - (The restarter role fails if it doesn't need to restart or something)
-    3. At the end of the script your server needs restarted. I don't know why
+    3. **When you run this playbook for the first time, you will need to restart the server before you can connect.**
         - todo - just restart the server every time the playbook is run or something
+        - future - troubleshoot this issue in stouts or OpenVPN
     4. To reconfigure or update your server you may run `manage.sh` again
 
 6. email the .ovpn files to all your users
