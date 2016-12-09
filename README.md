@@ -12,7 +12,7 @@ Give all your non-technical friends a free VPN!
 
 Companies like verizon, AT&T, and Comcast already have developed tools to sell police bulk access to your data without a warrant. Isn't this illegal spying? Not if your internet provider does it as a service!
 
-Do you want every corrupt government contractor having access to your personal browser history?  Right now, they often do.
+Do you want every corrupt government contractor to have access to your browser history?  Right now, they often do.
 
 
 #### Installation Guide
