@@ -1,7 +1,7 @@
 
 ### Digital Ocean Ubuntu 16.04 LTS OpenVPN + Stouts.openvpn
 
-This playbook will quickly pop up an (optionally disposable) OpenVPN VPN service.
+Make a self hosted VPN in 15 minutes.
 
 If you can 'kind of' run a server that should be enough to manage this.
 
