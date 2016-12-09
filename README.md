@@ -8,6 +8,13 @@ If you can 'kind of run a server', then you can manage this.
 Give all your non-technical friends a free VPN!
 
 
+#### Why?
+
+Companies like verizon, AT&T, and Comcast already have developed tools to sell police bulk access to your data without a warrant. Isn't this illegal spying? Not if your internet provider does it as a service!
+
+Do you want every corrupt government contractor having access to your personal browser history?  Right now, they often do.
+
+
 #### Installation Guide
 
 1. [Make an account and get a $10 free credit at digital ocean](https://m.do.co/c/a4d54c9e5004)
