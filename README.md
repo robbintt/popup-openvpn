@@ -11,6 +11,7 @@ If you can 'kind of' run a server that should be enough to manage this.
 #### Installation Guide
 
 1. [Make an account and get a $10 free credit at digital ocean](https://m.do.co/c/a4d54c9e5004)
+    - If you have an account then you do not need to make another one.
     - disclaimer: I get some free credit when you use this link. Thanks!
 
 2. Add your `SSH key` to `Digital Ocean`
