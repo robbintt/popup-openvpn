@@ -1,13 +1,11 @@
 
-### Digital Ocean Ubuntu 16.04 LTS OpenVPN + Stouts.openvpn
+### Popup OpenVPN
 
 Make a self hosted VPN in 15 minutes.
 
 If you can 'kind of run a server', then you can manage this.
 
 Give all your non-technical friends a free VPN!
-
-
 
 
 #### Installation Guide
