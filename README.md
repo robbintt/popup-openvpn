@@ -3,7 +3,10 @@
 
 Make a self hosted VPN in 15 minutes.
 
-If you can 'kind of' run a server that should be enough to manage this.
+If you can 'kind of run a server', then you can manage this.
+
+Set up all your non-technical friends with ovpn files, users, and passwords!
+
 
 **When you run this playbook for the first time, you will need to restart the server before you can connect.**
 
