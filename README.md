@@ -5,7 +5,7 @@ Make a self hosted VPN in 15 minutes.
 
 If you can 'kind of run a server', then you can manage this.
 
-Set up all your non-technical friends with ovpn files, users, and passwords!
+Give all your non-technical friends a free VPN!
 
 
 
