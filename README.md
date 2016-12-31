@@ -90,6 +90,9 @@ Do you want every corrupt government contractor to have access to your browser h
     2. You will need to follow the client specific instructions
         - TODO: Assemble links for client instructions
     3. All your users need to do this step for all their devices
+    4. Linux
+        - Arch has a [good guide](https://wiki.archlinux.org/index.php/OpenVPN#DNS) for this. Find a better way.
+
 
 8. Maintaining your server
     - TODO
