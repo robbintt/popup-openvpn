@@ -108,6 +108,7 @@ Do you want every corrupt government contractor to have access to your browser h
 2. Make a workflow for adding a new user and client certificate "for a friend"
 3. Add an automatic updates tool. 
 4. Move Stouts.openvpn default to 2048 bit certificate.
+    - [People are probably breaking 1024 keys](https://www.eff.org/deeplinks/2015/10/how-to-protect-yourself-from-nsa-attacks-1024-bit-DH)
     - Add variables in `group_vars/all`
     - needs testing
 5. Test this guide from very beginning to very end.
