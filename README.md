@@ -44,7 +44,7 @@ Do you want every corrupt government contractor to have access to your browser h
 
 4. Configure this repo for your users
     1. Clone this repository on your local computer
-        - `git clone https://github.com/robbintt/popup-openvpn.git`
+        - `git clone --recursive https://github.com/robbintt/popup-openvpn.git`
     1. Configuration files: 
         - `hosts` 
         - `group_vars/all`
