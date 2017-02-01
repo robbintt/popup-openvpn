@@ -7,6 +7,11 @@
 # lazy way: one certificate for all your machines
 openvpn_use_pam: yes
 
+# Use 2017 cipher lengths
+# openvpn_port: 443
+openvpn_key_size: 2048
+openvpn_cipher: AES-256-CBC
+
 # it is preferred to generate a certificate per name/password
 # depending on your use case you can use this per device or per person
 # per device is preferred

@@ -1,4 +1,5 @@
 *.swp
 *.retry
+.DS_Store
 
 ovpn_files/*
