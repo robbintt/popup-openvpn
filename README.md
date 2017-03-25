@@ -83,12 +83,15 @@ Do you want every corrupt government contractor to have access to your browser h
 
 7. Install a client on each of your devices.  You will need: `user`, `password`, `.ovpn file`
     1. Client Recommendations
-        - macos: [Tunnelblick](https://tunnelblick.net/)
+        - macOS: [Tunnelblick](https://tunnelblick.net/)
             - option: use `brew cask` to install
-        - iphone app store: `OpenVPN` by OpenVPN Technologies
-        - android app store: `OpenVPN Connect` by OpenVPN Technologies
+        - iOS (iPhone/iPad) App Store: [`OpenVPN Connect`](https://itunes.apple.com/us/app/openvpn-connect/id590379981?mt=8) by OpenVPN Technologies
+        - Android/Google Play store: [`OpenVPN Connect`](https://play.google.com/store/apps/details?id=net.openvpn.openvpn) by OpenVPN Technologies
     2. You will need to follow the client specific instructions
-        - TODO: Assemble links for client instructions
+        - iOS | [`OpenVPN`](https://itunes.apple.com/us/app/openvpn-connect/id590379981?mt=8)
+            - You're going to want to go through [this set-up process](https://vikingvpn.com/connection-guides/ios) for iOS file syncing for the most secure way to share you `.ovpn` files. While you can send the file(s) through email, _this is not recommended as email is often unencrypted_, and will be assuming you don't have a prior end-to-end encryption system set up. The guide for iTunes sync in that VikingVPN link is rather outdated, so please refer to [this official support page for file syncing in iTunes 12.x (most recent version as or writing)](https://support.apple.com/kb/PH19463).
+            - Note: to connect you'll want to go through the OpenVPN app, sign in, and connect in-app after importing your `.ovpn` profile(s).
+        - TODO: Assemble more links for client instructions
     3. All your users need to do this step for all their devices
     4. Linux
         - Arch has a [good guide](https://wiki.archlinux.org/index.php/OpenVPN#DNS) for this. Find a better way.
