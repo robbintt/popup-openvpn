@@ -108,17 +108,13 @@ Do you want every corrupt government contractor to have access to your browser h
 #### Future
 
 1. Use ansible vault to encrypt group_vars/all
-2. Make a workflow for adding a new user and client certificate "for a friend"
-3. Add an automatic updates tool. 
-4. Move Stouts.openvpn default to 2048 bit certificate.
-    - [People are probably breaking 1024 keys](https://www.eff.org/deeplinks/2015/10/how-to-protect-yourself-from-nsa-attacks-1024-bit-DH)
-    - Add variables in `group_vars/all`
-    - needs testing
-5. Test this guide from very beginning to very end.
+1. Make a workflow for adding a new user and client certificate "for a friend"
+1. Add an automatic updates tool. 
+1. Test this guide from very beginning to very end.
     - Beginning: Create a Digital Ocean Account
     - End: Install the ovpn cert and put the password in on all your devices
     - Very End: Maintaining your server
-6. Deploy to the world at large (reddit? digital ocean article?)
+1. Deploy to the world at large (reddit? digital ocean article?)
 
 
 #### Stouts.openvpn
