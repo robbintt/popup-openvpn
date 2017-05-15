@@ -1,0 +1,14 @@
+
+- name: install unattended upgrades
+  apt: name={{ item }} state=installed update_cache=yes cache_valid_time=3600
+  with_items:
+    - unattended-upgrades
+
+- name: Deploy unattended-upgrades configuration - auto reboot at 9 PM
+  template:
+    src: "50unattended-upgrades.j2"
+    dest: "/etc/apt/apt.conf.d/50unattended-upgrades"
+    owner: root
+    group: root
+    mode: 0644
+

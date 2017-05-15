@@ -18,6 +18,7 @@
     - common
     - sudo
     - swapfile
+    - unattended-upgrades
 
 - name: deploy Stoutsopenvpn OpenVPN role
   hosts: Stoutsopenvpn
