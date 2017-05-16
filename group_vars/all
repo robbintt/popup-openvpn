@@ -12,6 +12,9 @@ openvpn_use_pam: yes
 openvpn_key_size: 2048
 openvpn_cipher: AES-256-CBC
 
+# use debian/ubuntu easyrsa
+openvpn_use_system_easyrsa: true
+
 # it is preferred to generate a certificate per name/password
 # depending on your use case you can use this per device or per person
 # per device is preferred
